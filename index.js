@@ -37,6 +37,11 @@ app.get('/api/v1/predictions/actual', (req, res) => {
     res.send(coord_arr);
 })
 
+app.get('/api/v1/predictions/latency-test', (req, res) => {
+    console.log('GET - latency test');
+    res.send(["HELLO THIS IS A LATENCY TEST"]);
+})
+
 app.listen(app.get("port"), () => {
   console.log("Express server listening on port " + app.get("port"));
 });
