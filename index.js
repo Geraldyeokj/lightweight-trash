@@ -8,15 +8,18 @@ const fs = require("fs");
 scheduledFunctions.initScheduledJobs();
 
 app.get('/api/v1/predictions/yhat', (req, res) => {
-    console.log('GET - yhat');
+    console.log('GET - yhat: request received');
     let coord_arr = [];
-    const csv_data = fs.readFileSync("./pythonstuff/yhat_current.csv", {encoding: "utf8"});
+    const csv_data = fs.readFileSync("./pythonstuff/yhat_current.csv", {encoding: "utf8"})
+    console.log('GET - yhat: file read');;
     const rows = csv_data.split("\n")
     rows.forEach(row => {
       const r = row.split(",")
       coord_arr.push([r[0], r[r.length - 2], r[r.length -1]])
     });
+    console.log('GET - yhat: rows cleaned');
     coord_arr.pop()
+    console.log('GET - yhat: response sent');
     res.send(coord_arr);
 })
 
