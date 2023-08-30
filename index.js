@@ -7,7 +7,7 @@ const fs = require("fs");
 // Calling CRON jobs.
 scheduledFunctions.initScheduledJobs();
 
-app.get('/yhat', (req, res) => {
+app.get('/api/v1/predictions/yhat', (req, res) => {
     console.log('GET - yhat');
     let coord_arr = [];
     const csv_data = fs.readFileSync("./pythonstuff/yhat_current.csv", {encoding: "utf8"});
@@ -20,7 +20,7 @@ app.get('/yhat', (req, res) => {
     res.send(coord_arr);
 })
 
-app.get('/actual', (req, res) => {
+app.get('/api/v1/predictions/actual', (req, res) => {
     console.log('GET - actual');
     let coord_arr = [];
     const csv_data = fs.readFileSync("./pythonstuff/test_input.csv", {encoding: "utf8"});
