@@ -17,7 +17,7 @@ const winstonLogger = createLogger({
 exports.initScheduledJobs = () => {
     console.log("CRON JOBS ACTIVATED");
     
-    const yhatUpdates = CronJob.schedule("*/3 * * * *", () => {
+    const yhatUpdates = CronJob.schedule("*/3 * * * *", async () => {
         try{
             console.log('CRON JOB: Updating Yhat | Called every 3 minutes ----------------------------------');
             console.log("current directory:", __dirname)
@@ -80,7 +80,7 @@ exports.initScheduledJobs = () => {
         }
     });
 
-    const gasPriceUpdates = CronJob.schedule("15 * * * * *", () => {
+    const gasPriceUpdates = CronJob.schedule("15 * * * * *", async () => {
         try {
             console.log('CRON JOB: Updating Gas Prices | Called every minute (at the 15 second mark) ------------------');
             console.log("current directory:", __dirname)
